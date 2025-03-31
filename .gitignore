@@ -1,0 +1,11 @@
+# common
+node_modules
+
+# build
+/build
+/dist
+
+# IDE
+.vscode
+.idea
+
