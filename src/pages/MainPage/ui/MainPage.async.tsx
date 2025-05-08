@@ -1,7 +1,8 @@
-import { lazy } from "react";
+import { lazy } from 'react'
 
 export const MainPageAsync = lazy(
-  // @ts-ignore
-  // ИСКУССТВЕННАЯ ЗАДЕРЖКА ПРИ ДЕПЛОЕ УБРАТЬ
-  () => new Promise((res) => setTimeout(() => res(import("./MainPage")), 1500))
-);
+    // ИСКУССТВЕННАЯ ЗАДЕРЖКА ПРИ ДЕПЛОЕ УБРАТЬ
+    () =>
+        // @ts-ignore
+        new Promise((res) => setTimeout(() => res(import('./MainPage')), 1500))
+)
