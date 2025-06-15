@@ -14,7 +14,12 @@ export default defineConfig([
     },
     {
         files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-        languageOptions: { globals: globals.browser },
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                __IS_DEV__: true,
+            },
+        },
     },
     tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
