@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
-
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { PageLoader } from './PageLoader'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-const meta = {
+export default {
     title: 'shared/PageLoader',
     component: PageLoader,
-    tags: ['autodocs'],
-} satisfies Meta<typeof PageLoader>
+} as ComponentMeta<typeof PageLoader>
 
-export default meta
-type Story = StoryObj<typeof meta>
+const Template: ComponentStory<typeof PageLoader> = () => <PageLoader />
 
-export const Light: Story = {}
-export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const Light = Template.bind({})
+Light.args = {}
+
+export const Dark = Template.bind({})
+Dark.args = {}
+Dark.decorators = [ThemeDecorator(Theme.DARK)]

@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
-
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ErrorPage } from './ErrorPage'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-const meta = {
+export default {
     title: 'widgets/ErrorPage',
     component: ErrorPage,
-    tags: ['autodocs'],
-} satisfies Meta<typeof ErrorPage>
+} as ComponentMeta<typeof ErrorPage>
 
-export default meta
-type Story = StoryObj<typeof meta>
+const Template: ComponentStory<typeof ErrorPage> = () => <ErrorPage />
 
-export const Light: Story = {}
-export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const Light = Template.bind({})
+Light.args = {}
+
+export const Dark = Template.bind({})
+Dark.args = {}
+Dark.decorators = [ThemeDecorator(Theme.DARK)]

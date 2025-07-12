@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
-
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Sidebar } from './Sidebar'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-const meta = {
+export default {
     title: 'widgets/Sidebar',
     component: Sidebar,
-    tags: ['autodocs'],
-} satisfies Meta<typeof Sidebar>
+} as ComponentMeta<typeof Sidebar>
 
-export default meta
-type Story = StoryObj<typeof meta>
+const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />
 
-export const Light: Story = {}
-export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const Light = Template.bind({})
+Light.args = {}
+
+export const Dark = Template.bind({})
+Dark.args = {}
+Dark.decorators = [ThemeDecorator(Theme.DARK)]

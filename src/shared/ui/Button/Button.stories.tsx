@@ -1,60 +1,53 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
-
-import { fn } from 'storybook/test'
-
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button, ThemeButton } from './Button'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-const meta = {
+export default {
     title: 'shared/Button',
     component: Button,
-    tags: ['autodocs'],
     argTypes: {
         theme: { control: 'select' },
     },
-    args: { onClick: fn() },
-} satisfies Meta<typeof Button>
+    args: { onClick: () => {} },
+} as ComponentMeta<typeof Button>
 
-export default meta
-type Story = StoryObj<typeof meta>
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-export const Primary: Story = {
-    args: {
-        children: 'Button',
-    },
-}
-export const PrimaryDark: Story = {
-    args: {
-        children: 'Button',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
+export const Primary = Template.bind({})
+Primary.args = {
+    children: 'Button',
 }
 
-export const Clear: Story = {
-    args: {
-        theme: ThemeButton.CLEAR,
-        children: 'Button',
-    },
+export const PrimaryDark = Template.bind({})
+PrimaryDark.args = {
+    children: 'Button',
 }
-export const ClearDark: Story = {
-    args: {
-        theme: ThemeButton.CLEAR,
-        children: 'Button',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Clear = Template.bind({})
+Clear.args = {
+    theme: ThemeButton.CLEAR,
+    children: 'Button',
 }
 
-export const Outline: Story = {
-    args: {
-        theme: ThemeButton.OUTLINE,
-        children: 'Button',
-    },
+export const ClearDark = Template.bind({})
+ClearDark.args = {
+    theme: ThemeButton.CLEAR,
+    children: 'Button',
 }
-export const OutlineDark: Story = {
-    args: {
-        theme: ThemeButton.OUTLINE,
-        children: 'Button',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
+ClearDark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Outline = Template.bind({})
+Outline.args = {
+    theme: ThemeButton.OUTLINE,
+    children: 'Button',
 }
+
+export const OutlineDark = Template.bind({})
+OutlineDark.args = {
+    theme: ThemeButton.OUTLINE,
+    children: 'Button',
+}
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)]
