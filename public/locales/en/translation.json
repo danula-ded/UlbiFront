@@ -1,8 +1,10 @@
 {
-    "Проверка перевода": "Check translation",
-    "Страница не найдена": "Page not found",
-    "Язык": "English",
-    "Короткий язык": "En",
-    "Главная": "Main",
-    "О сайте": "About"
+  "Проверка перевода": "Check translation",
+  "Страница не найдена": "Page not found",
+  "Язык": "English",
+  "Короткий язык": "En",
+  "Главная": "Main",
+  "О сайте": "About",
+  "increment": "increment",
+  "decrement": "decrement"
 }
