@@ -8,6 +8,7 @@ import pluginReact from 'eslint-plugin-react'
 import { defineConfig } from 'eslint/config'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import i18next from 'eslint-plugin-i18next'
+import * as reactHooks from 'eslint-plugin-react-hooks'
 
 export default defineConfig([
     {
@@ -29,12 +30,19 @@ export default defineConfig([
     eslintPluginPrettierRecommended,
     i18next.configs['flat/recommended'],
     {
+        plugins: {
+            'react-hooks': reactHooks,
+        },
+    },
+    {
         rules: {
             'react/no-deprecated': 'off',
             'react/display-name': 'off',
             'react/react-in-jsx-scope': 'off',
             '@typescript-eslint/ban-ts-comment': 'warn',
             'i18next/no-literal-string': ['error', { markupOnly: true }],
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'error',
         },
     },
 ])

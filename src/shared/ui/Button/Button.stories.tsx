@@ -72,6 +72,37 @@ ClearDark.args = {
 }
 ClearDark.decorators = [ThemeDecorator(Theme.DARK)]
 
+export const ClearInverted = Template.bind({})
+ClearInverted.args = {
+    theme: ButtonTheme.CLEAR_INVERTED,
+    children: 'Button',
+}
+export const ClearInvertedSizeM = Template.bind({})
+ClearInvertedSizeM.args = {
+    theme: ButtonTheme.CLEAR_INVERTED,
+    children: 'Button',
+    size: ButtonSize.M,
+}
+export const ClearInvertedSizeL = Template.bind({})
+ClearInvertedSizeL.args = {
+    theme: ButtonTheme.CLEAR_INVERTED,
+    children: 'Button',
+    size: ButtonSize.L,
+}
+export const ClearInvertedSizeXL = Template.bind({})
+ClearInvertedSizeXL.args = {
+    theme: ButtonTheme.CLEAR_INVERTED,
+    children: 'Button',
+    size: ButtonSize.XL,
+}
+
+export const ClearInvertedDark = Template.bind({})
+ClearInvertedDark.args = {
+    theme: ButtonTheme.CLEAR_INVERTED,
+    children: 'Button',
+}
+ClearInvertedDark.decorators = [ThemeDecorator(Theme.DARK)]
+
 export const Outline = Template.bind({})
 Outline.args = {
     theme: ButtonTheme.OUTLINE,
