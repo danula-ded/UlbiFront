@@ -2,7 +2,6 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
 import { Portal } from '../Portal/Portal'
-import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
     children: ReactNode
@@ -16,7 +15,6 @@ const ANIMATION_DELAY = 300
 export const Modal = ({ children, className, isOpen, onClose }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false)
     const timerRef = useRef<ReturnType<typeof setTimeout>>()
-    const { theme } = useTheme()
 
     const onContentClick = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -55,7 +53,6 @@ export const Modal = ({ children, className, isOpen, onClose }: ModalProps) => {
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
-        [cls[theme]]: true,
     }
 
     return (
