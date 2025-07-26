@@ -11,11 +11,9 @@ jobs:
         strategy:
             matrix:
                 node-version: [17.x]
-            fail-fast: false
 
         steps:
             - uses: actions/checkout@v2
-
             - name: Staring Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
@@ -25,47 +23,22 @@ jobs:
               run: npm install
 
             - name: build production project
-              id: build
-              run: |
-                  npm run build:prod || echo "::warning::Build failed but continuing"
-              continue-on-error: true
+              run: npm run build:prod
+              if: always()
 
             - name: linting typescript
-              id: eslint
-              run: |
-                  npm run eslint || echo "::warning::ESLint found issues"
-              continue-on-error: true
+              run: npm run eslint
+              if: always()
 
             - name: linting css
-              id: stylelint
-              run: |
-                  npm run stylelint || echo "::warning::Stylelint found issues"
-              continue-on-error: true
+              run: npm run stylelint
 
             - name: unit testing
-              id: unit-tests
-              run: |
-                  npm run unit || echo "::warning::Unit tests failed"
-              continue-on-error: true
+              if: always()
+              run: npm run unit
 
             - name: build storybook and run loki
-              id: visual-tests
-              run: |
-                  npm run storybook:build || echo "::warning::Storybook build failed"
-                  npm run loki:ci || echo "::warning::Visual tests failed"
-              continue-on-error: true
-
-            - name: Post results
               if: always()
               run: |
-                  echo "=== Pipeline Summary ==="
-                  echo "Build: ${{ steps.build.outcome }}"
-                  echo "ESLint: ${{ steps.eslint.outcome }}"
-                  echo "Stylelint: ${{ steps.stylelint.outcome }}"
-                  echo "Unit Tests: ${{ steps.unit-tests.outcome }}"
-                  echo "Visual Tests: ${{ steps.visual-tests.outcome }}"
-
-                  if [[ "${{ steps.build.outcome }}" == "failure" ]]; then
-                    echo "::error::Critical build step failed"
-                    exit 1
-                  fi
+                  npm run storybook:build
+                  npm run loki:ci
